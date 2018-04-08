@@ -27,6 +27,12 @@ class Model(object):
         self._vocab_len = len(get_tokenizer().word_index)
         self._maxlen = 40
         self._num_labels = 2
+        if path.exists(self._model_path):
+            print('Loading mood feeler model...')
+            self._model = self._load_model()
+        else:
+            print('Mood feeler model does not exist!!!')
+            print('Please use \'train\' method to train a new model.')
 
     def _get_model(self):
         """
@@ -116,12 +122,11 @@ class Model(object):
         p = TN/(TN+FN)
         r = TN/(TN+FP)
         f1 = 2*p*r/(p+r)
-        print('Following scores base on negtive texts.')
+        print('Following scores base on negative texts.')
         print('Precision:\t', p)
         print('Recall:\t', r)
         print('F_1 score:\t', f1)
 
     def predict(self, texts: list):
-        model = self._load_model()
         x = t2s(texts, self._maxlen)
-        return model.predict_on_batch(x)
+        return self._model.predict_on_batch(x)

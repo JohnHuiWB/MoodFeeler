@@ -3,6 +3,7 @@
 
 __author__ = 'JohnHuiWB'
 
-from MoodFeeler.model import predict
+from MoodFeeler.model import predict, train
 
 predict = predict
+train = train

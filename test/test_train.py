@@ -13,9 +13,9 @@ from MoodFeeler.model import *
 if __name__ == '__main__':
     # draw_model()
 
-    # train()
+    # train(epochs=1)
 
-    # result = predict(['去不了就别酸，人家是留学', '微笑拥抱每一天,做像向日葵般温暖的女子'])
+    result = predict(['去不了就别酸，人家是留学', '微笑拥抱每一天,做像向日葵般温暖的女子'])
     # print(result)
 
-    eval()
+    # eval()
